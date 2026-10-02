@@ -74,7 +74,7 @@ class FurnitureCategoryServiceTest {
         // Assert
         assertNotNull(result);
         assertEquals(id, result.getId());
-        assertEquals("Chair", result.getName());
+        assertEquals("Chairrrrrr", result.getName());
 
         verify(_repo, times(1)).findById(id);
     }
