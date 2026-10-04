@@ -29,3 +29,11 @@ jobs:
 
       - name: Build and run tests
         run: ./mvnw --batch-mode clean verify
+
+      - name: Upload Maven test reports
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+            name: maven-test-reports
+            path: target/surefire-reports/
+
