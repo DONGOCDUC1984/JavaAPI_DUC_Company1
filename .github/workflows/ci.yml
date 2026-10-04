@@ -1,21 +1,37 @@
+# This is just a name.I can use another name like "Java DUC CI".When I go to:
+#GitHub → Actions
+#I see:
+#Java CI
 name: Java CI
-
+# "on:" means : "When should this workflow run"
+#This means: Run CI when someone pushes code to the main branch.
 on:
   push:
     branches:
       - main
-
+#This means: Run CI when a Pull Request is targeting main branch.
+#  This is extremely useful in a team.
+#Imagine another developer creates:
+#  feature/payment
+#and creates:
+#  Pull Request → main
+#  GitHub Actions automatically tests it.
+#If the tests fail:
+#  ❌ CI failed
+#  the team knows before merging it.
+#
   pull_request:
     branches:
       - main
-
+#This means: The workflow can read repository contents.
 permissions:
   contents: read
-
+#This means: GitHub should create a temporary Ubuntu machine to execute this job.
+#It does NOT mean you need Ubuntu on your Windows computer.I don't need to install Ubuntu
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
+#
     steps:
       - name: Checkout source code
         uses: actions/checkout@v7
@@ -31,6 +47,8 @@ jobs:
         run: ./mvnw --batch-mode clean verify
 #The following is used to create a file "maven-test-reports" to show reports of unit tests.
       - name: Upload Maven test reports
+        #if: always() means:
+        #Run this step regardless of whether previous steps succeeded or failed.
         if: always()
         uses: actions/upload-artifact@v6
         with:
