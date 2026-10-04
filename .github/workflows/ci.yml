@@ -29,7 +29,7 @@ jobs:
 
       - name: Build and run tests
         run: ./mvnw --batch-mode clean verify
-
+#The following is used to create a file "maven-test-reports" to show reports of unit tests.
       - name: Upload Maven test reports
         if: always()
         uses: actions/upload-artifact@v6
