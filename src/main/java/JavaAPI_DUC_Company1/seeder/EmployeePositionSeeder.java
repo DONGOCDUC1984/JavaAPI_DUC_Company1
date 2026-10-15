@@ -8,11 +8,13 @@ import JavaAPI_DUC_Company1.repository.DepartmentRepository;
 import JavaAPI_DUC_Company1.repository.PositionCategoryRepository;
 import JavaAPI_DUC_Company1.repository.PositionRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
+@Order(14)
 public class EmployeePositionSeeder implements CommandLineRunner {
 
     private final PositionRepository positionRepository;

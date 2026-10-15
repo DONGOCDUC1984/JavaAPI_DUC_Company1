@@ -5,10 +5,12 @@ import JavaAPI_DUC_Company1.repository.BookCategoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 @Configuration
 public class BookCategorySeeder {
     @Bean
+    @Order(3)
     CommandLineRunner seedBookCategories(BookCategoryRepository repo) {
         return args -> {
 

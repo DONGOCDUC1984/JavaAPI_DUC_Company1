@@ -5,10 +5,12 @@ import JavaAPI_DUC_Company1.repository.FurnitureCategoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 @Configuration
 public class FurnitureCategorySeeder {
     @Bean
+    @Order(5)
     CommandLineRunner seedFurnitureCategories(FurnitureCategoryRepository repo) {
         return args -> {
 

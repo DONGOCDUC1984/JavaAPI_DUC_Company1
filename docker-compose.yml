@@ -1,0 +1,80 @@
+#This means: Docker Compose is going to manage one or more services/containers.
+services:
+  #This means: mysql is the service name.
+  mysql:
+    #This means:Docker will download the official MySQL 8.0 image if I don't already have it.
+    image: mysql:8.0
+    container_name: javaapi-duc-company1-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: abcxyz
+      #This means: This tells MySQL to create javaapi_duc_company1 database.
+      MYSQL_DATABASE: javaapi_duc_company1
+      #This means:
+      #Windows
+      #  │
+      #  │ port 3307
+      #  ↓
+      #MySQL container
+      #  │
+      #  │ port 3306
+      #  ↓
+      #MySQL
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    #The health checks are useful because MySQL and Redis containers may start
+    #before their services are actually ready.
+    healthcheck:
+      test: [ "CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$${MYSQL_ROOT_PASSWORD} --silent" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+#Adding a Redis container.
+  redis:
+        image: redis:7-alpine
+        container_name: javaapi-duc-company1-redis
+        #This means: exposes Redis on Windows port 6380,
+        #avoiding a potential conflict with a Redis instance already using 6379.
+        ports:
+          - "6380:6379"
+        #The health checks are useful because MySQL and Redis containers may start
+        #before their services are actually ready.
+        healthcheck:
+          test: [ "CMD", "redis-cli", "ping" ]
+          interval: 5s
+          timeout: 3s
+          retries: 10
+  app:
+    #This means:Builds my Spring Boot Docker image using my existing Dockerfile.
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: javaapi-duc-company1-app
+    #This means:Makes the API accessible from Windows at port 8080.
+    ports:
+      - "8080:8080"
+    #This means: Docker now makes the Windows uploads folder accessible inside the app container.
+    #This is called a bind mount.Without the following line, products' images will not be seen.
+    volumes:
+      - ./uploads:/app/uploads
+
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:mysql://mysql:3306/javaapi_duc_company1?rewriteBatchedStatements=true"
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: abcxyz
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+    #This means: Waits for MySQL and Redis health checks to pass before starting the app.
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+#This means: Docker creates a named volume called mysql_data to store your MySQL database files
+#persistently.
+volumes:
+      mysql_data:
+

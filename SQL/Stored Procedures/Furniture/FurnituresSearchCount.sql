@@ -13,7 +13,7 @@ CREATE PROCEDURE FurnituresSearchCount(
 )
 BEGIN
     SELECT COUNT(*) AS totalCount
-    FROM Furnitures f
+    FROM furnitures f
     WHERE
         (p_searchName IS NULL
             OR p_searchName = ''

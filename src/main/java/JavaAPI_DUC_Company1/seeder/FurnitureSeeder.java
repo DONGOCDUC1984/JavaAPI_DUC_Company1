@@ -7,6 +7,7 @@ import JavaAPI_DUC_Company1.repository.FurnitureRepository;
 import JavaAPI_DUC_Company1.service.business.interfaces.IFurnitureService;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -17,6 +18,7 @@ import java.util.Random;
 
 // It takes approximately 21 minutes to seed 1000500 furnitures into the database.
 @Component
+@Order(17)
 public class FurnitureSeeder {
 
     private final FurnitureRepository furnitureRepository;

@@ -5,6 +5,7 @@ import JavaAPI_DUC_Company1.repository.PositionRepository;
 import JavaAPI_DUC_Company1.repository.ProvinceCityRepository;
 import JavaAPI_DUC_Company1.repository.StaffRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ import java.util.Random;
 
 // It takes nearly 2.5 minutes to seed 100500 staffs (employees) into the database.
 @Component
+@Order(16)
 public class EmployeeSeeder implements CommandLineRunner {
     private final StaffRepository staffRepository;
     private final PositionRepository positionRepository;

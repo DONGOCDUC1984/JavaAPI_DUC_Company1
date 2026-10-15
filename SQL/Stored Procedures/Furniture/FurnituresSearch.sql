@@ -29,7 +29,7 @@ BEGIN
     */
     SELECT f.Id
     INTO v_startId
-    FROM Furnitures f
+    FROM furnitures f
     WHERE
         (p_searchName IS NULL
             OR p_searchName = ''
@@ -88,7 +88,7 @@ BEGIN
         c.id AS furnitureCategoryId,
         c.name AS furnitureCategoryName
 
-    FROM Furnitures f
+    FROM furnitures f
 
     JOIN furniture_categories c
         ON f.furniture_category_id = c.Id

@@ -4,11 +4,13 @@ import JavaAPI_DUC_Company1.repository.ProductCategoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 @Configuration
 public class ProductCategorySeeder {
 
     @Bean
+    @Order(2)
     CommandLineRunner seedProductCategories(ProductCategoryRepository repo) {
         return args -> {
 

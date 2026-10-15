@@ -9,19 +9,21 @@ import JavaAPI_DUC_Company1.repository.PositionCategoryRepository;
 import JavaAPI_DUC_Company1.repository.PositionRepository;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Component
-public class PositionSeeder {
+@Order(15)
+public class LeaderPositionSeeder {
 
     private final PositionRepository positionRepository;
     private final DepartmentRepository departmentRepository;
     private final PositionCategoryRepository positionCategoryRepository;
 
-    public PositionSeeder(
+    public LeaderPositionSeeder(
             PositionRepository positionRepository,
             DepartmentRepository departmentRepository,
             PositionCategoryRepository positionCategoryRepository) {

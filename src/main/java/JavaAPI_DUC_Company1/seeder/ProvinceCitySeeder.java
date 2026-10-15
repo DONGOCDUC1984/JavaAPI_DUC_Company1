@@ -5,10 +5,12 @@ import JavaAPI_DUC_Company1.repository.ProvinceCityRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 @Configuration
 public class ProvinceCitySeeder {
     @Bean
+    @Order(1)
     CommandLineRunner seedProvinceCities(ProvinceCityRepository repo) {
         return args -> {
 

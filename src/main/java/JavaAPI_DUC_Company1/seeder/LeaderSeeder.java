@@ -5,6 +5,7 @@ import JavaAPI_DUC_Company1.repository.PositionRepository;
 import JavaAPI_DUC_Company1.repository.ProvinceCityRepository;
 import JavaAPI_DUC_Company1.repository.StaffRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Random;
 
 @Component
+@Order(7)
 public class LeaderSeeder implements CommandLineRunner {
     private final StaffRepository staffRepository;
     private final PositionRepository positionRepository;

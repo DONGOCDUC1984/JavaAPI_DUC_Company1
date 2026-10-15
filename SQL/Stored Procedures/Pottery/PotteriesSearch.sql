@@ -29,7 +29,7 @@ BEGIN
     */
     SELECT p.Id
     INTO v_startId
-    FROM Potteries p
+    FROM potteries p
     WHERE
         (p_searchName IS NULL
             OR p_searchName = ''
@@ -88,7 +88,7 @@ BEGIN
         c.id AS potteryCategoryId,
         c.name AS potteryCategoryName
 
-    FROM Potteries p
+    FROM potteries p
 
     JOIN pottery_categories c
         ON p.pottery_category_id = c.Id

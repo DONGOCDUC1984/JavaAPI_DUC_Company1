@@ -5,6 +5,8 @@ import JavaAPI_DUC_Company1.model.BookCategory;
 import JavaAPI_DUC_Company1.repository.BookCategoryRepository;
 import JavaAPI_DUC_Company1.repository.BookRepository;
 import jakarta.annotation.PostConstruct;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +16,8 @@ import java.util.List;
 import java.util.Random;
 // It takes approximately 2.5 minutes to seed 100500 books into the database
 @Component
-public class BookSeeder {
+@Order(12)
+public class BookSeeder implements CommandLineRunner {
 
     private final BookRepository bookRepository;
     private final BookCategoryRepository bookCategoryRepository;
@@ -41,9 +44,9 @@ public class BookSeeder {
             "Red"
     };
 
-    @PostConstruct
+    @Override
     @Transactional
-    public void seedBooks() {
+    public void run(String... args) {
 
         if (bookRepository.count() > 0)
             return;

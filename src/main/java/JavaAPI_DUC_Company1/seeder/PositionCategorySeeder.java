@@ -5,10 +5,12 @@ import JavaAPI_DUC_Company1.repository.PositionCategoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 @Configuration
 public class PositionCategorySeeder {
     @Bean
+    @Order(13)
     CommandLineRunner seedPositionCategories(PositionCategoryRepository repo) {
         return args -> {
 

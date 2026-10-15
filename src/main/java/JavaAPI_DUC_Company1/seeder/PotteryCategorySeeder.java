@@ -5,10 +5,12 @@ import JavaAPI_DUC_Company1.repository.PotteryCategoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 @Configuration
 public class PotteryCategorySeeder {
     @Bean
+    @Order(7)
     CommandLineRunner seedPotteryCategories(PotteryCategoryRepository repo) {
         return args -> {
 
