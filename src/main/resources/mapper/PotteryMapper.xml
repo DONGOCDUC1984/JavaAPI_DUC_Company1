@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="JavaAPI_DUC_Company1.mapper.PotteryMapper">
+    <!--    SEARCH-->
+    <select id="search"
+            parameterType="JavaAPI_DUC_Company1.model.dto.pottery.PotteryInputSearchDTO"
+            resultType="JavaAPI_DUC_Company1.model.dto.pottery.PotteryOutputSearchDTO">
+
+        CALL PotteriesSearch( #{currentPage}, #{pageSize}, #{searchName}, #{colour},
+        #{isMadeInVietnam}, #{minPrice}, #{maxPrice}, #{potteryCategoryId}, #{startTime},
+        #{endTime} )
+
+    </select>
+
+    <!--    COUNT-->
+    <select id="searchCount"
+            parameterType="JavaAPI_DUC_Company1.model.dto.pottery.PotteryInputSearchDTO"
+            resultType="long">
+
+        CALL PotteriesSearchCount( #{searchName}, #{colour}, #{isMadeInVietnam},
+        #{minPrice}, #{maxPrice}, #{potteryCategoryId}, #{startTime}, #{endTime} )
+
+    </select>
+
+    <!--    Create-->
+    <insert id="create"
+            parameterType="JavaAPI_DUC_Company1.model.dto.pottery.PotteryAddUpdateDTO">
+
+        CALL PotteriesCreate( #{name}, #{colour}, #{isMadeInVietnam},
+        #{price}, #{potteryCategoryId}, #{manufacturingDate} )
+
+    </insert>
+
+    <!--    Update-->
+    <update id="update"
+            parameterType="JavaAPI_DUC_Company1.model.dto.pottery.PotteryAddUpdateDTO">
+
+        CALL PotteriesUpdate( #{id},#{name}, #{colour}, #{isMadeInVietnam},
+        #{price}, #{potteryCategoryId}, #{manufacturingDate} )
+
+    </update>
+
+    <!--    Delete-->
+    <delete id="delete"
+            parameterType="Integer">
+
+        CALL PotteriesDelete( #{id} )
+
+    </delete>
+
+    <!--    Export to Excel-->
+    <select id="export"
+            resultType="JavaAPI_DUC_Company1.model.dto.pottery.PotteryOutputSearchDTO">
+
+        CALL PotteriesExport( #{lastId}, #{batchSize}, #{input.searchName},
+        #{input.colour}, #{input.isMadeInVietnam}, #{input.minPrice},
+        #{input.maxPrice}, #{input.potteryCategoryId}, #{input.startTime},
+        #{input.endTime} )
+
+    </select>
+
+</mapper>
