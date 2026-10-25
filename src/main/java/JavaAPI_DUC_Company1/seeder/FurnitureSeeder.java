@@ -64,7 +64,7 @@ public class FurnitureSeeder {
         }
 
         Random random = new Random();
-        int totalFurnitures = 1000500;
+        int totalFurnitures = 100500;
         int batchSize = 5000;
         long start = System.currentTimeMillis();
         List<Furniture> furnitures = new ArrayList<>(batchSize);

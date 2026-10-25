@@ -65,7 +65,7 @@ public class PotterySeeder {
         }
 
         Random random = new Random();
-        int totalPotteries = 1000500;
+        int totalPotteries = 100500;
         int batchSize = 5000;
         long start = System.currentTimeMillis();
         List<Pottery> potteries = new ArrayList<>(batchSize);
