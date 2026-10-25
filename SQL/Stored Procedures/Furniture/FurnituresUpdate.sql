@@ -4,7 +4,7 @@ DELIMITER $$
 CREATE PROCEDURE FurnituresUpdate(p_Id INT,p_Name VARCHAR(255),p_Colour VARCHAR(100),p_IsMadeInVietnam INT
   ,p_Price DECIMAL(10,2),  p_FurnitureCategoryId INT,p_ManufacturingDate DATE)
 BEGIN
-  Update Furnitures
+  Update furnitures
     Set 
      name=p_Name,
      colour=p_Colour, 

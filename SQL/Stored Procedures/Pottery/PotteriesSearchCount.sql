@@ -17,7 +17,7 @@ BEGIN
 
     SELECT COUNT(*) AS totalCount
 
-    FROM Potteries p
+    FROM potteries p
 
     WHERE
         (p_searchName IS NULL

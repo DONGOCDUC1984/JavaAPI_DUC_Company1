@@ -3,7 +3,7 @@ DROP PROCEDURE IF EXISTS PotteriesDelete;
 DELIMITER $$
 CREATE PROCEDURE PotteriesDelete(p_Id INT)
 BEGIN
-  Delete from Potteries
+  Delete from potteries
   Where Id=p_Id ;
 END$$
 
