@@ -7,5 +7,5 @@ WORKDIR /app
 COPY target/*.jar app.jar
 # This means: This container is intended to provide a service on port 8080.
 EXPOSE 8080
-
+#This means:tells Docker to launch your packaged Spring Boot application whenever the container starts.
 ENTRYPOINT ["java", "-jar", "app.jar"]
